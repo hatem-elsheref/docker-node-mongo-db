@@ -1,0 +1,25 @@
+version: "3"
+services:
+  node-web-server:
+    container_name: node-web-server-container
+    restart: always
+    build:
+      context: ./app
+    ports:
+      - 8080:3000
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+    depends_on:
+      - database-server
+  database-server:
+    container_name: mongo-db-container
+    restart: always
+    image: mvertes/alpine-mongo
+    volumes:
+    - "./app/database:/data/db"
+    ports:
+    - 8081:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
