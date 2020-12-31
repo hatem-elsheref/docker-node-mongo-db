@@ -26,6 +26,11 @@ in the path of docker compose file
 $ sudo docker-compose build --no-cache
 $ sudo docker-compose up
 ```
+to change the publish port change it in  
+```sh
+Dockerfile Expose 3000 to your-port and in server.js file Change Variable of applicationPort to your-port
+docker-compose file change the public port from 8000 to any-port-you-need-to-access-the-app-in-your-browser
+```
 
 License
 ----
